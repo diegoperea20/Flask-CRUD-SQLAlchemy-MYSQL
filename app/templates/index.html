@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+  <title>Home</title>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Home</h1>
+
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <div class="messages">
+      {% for message in messages %}
+      <p>{{ message }}</p>
+      {% endfor %}
+    </div>
+    {% endif %}
+    {% endwith %}
+
+    <form action="/new" method="POST" class="form-container">
+      <input type="text" name="fullname" placeholder="Write your fullname">
+      <input type="text" name="email" placeholder="Write your email">
+      <input type="text" name="phone" placeholder="Write your phone">
+      <button>Submit</button>
+    </form>
+
+    <div class="contact-list">
+      {% for contact in contacts %}
+      <div class="contact-card">
+        <h2>{{ contact.fullname }}</h2>
+        <div class="contact-actions">
+          <a href="/delete/{{ contact.id }}" class="delete">Delete</a>
+          <a href="/update/{{ contact.id }}" class="update">Update</a>
+        </div>
+        <p>{{ contact.email }}</p>
+        <p>{{ contact.phone }}</p>
+      </div>
+      {% endfor %}
+    </div>
+
+  </div>
+
+</body>
+
+</html>

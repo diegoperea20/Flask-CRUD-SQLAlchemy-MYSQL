@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <title>Home</title>
+</head>
+<body>
+    <div class="container">
+    <h1>Home</h1>
+    <form action="/update/{{contact.id}}" method="POST" class="form-container">
+        <input type="text" name="fullname" placeholder="write your fullname " value="{{contact.fullname}}">
+        <input type="text" name="email" placeholder="write your email" value="{{contact.email}}">
+        <input type="text" name="phone" placeholder="write your phone " value="{{contact.phone}}">
+        <button>Submit</button>
+    </form>
+    </div>
+</body>
+</html>
